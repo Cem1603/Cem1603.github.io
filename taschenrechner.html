@@ -1,0 +1,187 @@
+<html>
+
+<link href="styletaschenrechner.css" type="text/css" rel="stylesheet">
+
+<head>
+    <h1>CEMS TASCHENRECHNER</h1>
+    <p>(Beta Version)</p>
+    <h2>CX-TR 2.0</h2>
+    <h3>LEAF</h3>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+
+<body>
+
+
+    <script>
+        function aufZahlGeklickt(welcheZahl) {
+            // finden was vorher drin stand
+            const vorher = document.getElementById('outputftzhuk').textContent;
+            // die zahl die jetzt gerade angeklickt wurde dahinter packen
+            const jetzt = vorher + welcheZahl;
+            // beide Sachen wieder zurückschreiben
+            document.getElementById('outputftzhuk').textContent = jetzt;
+        }
+
+        function aufOperatorGeklickt(welcherOperator) {
+            // finden was vorher drin stand
+            const vorher = document.getElementById('outputftzhuk').textContent;
+
+
+            // an die erste stelle darf nur ein minus 
+            if (vorher.length == 0 && welcherOperator != '-' && welcherOperator != '√') {
+                return;
+            }
+
+
+
+
+            // keine 2 minuse hintereinander
+            // ein weiterer minus darf erst dann getippt werden wenn das zeichen vorher kein minus war
+            if (vorher[vorher.length - 1] == '-' && welcherOperator == '-') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '+' && welcherOperator == '+') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '*' && welcherOperator == '*') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '.' && welcherOperator == '.') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '=' && welcherOperator == '=') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '/' && welcherOperator == '/') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '√' && welcherOperator == '√') {
+                return;
+            }
+            // ein weiteres sonderzeichen darf erst dann getippt werden wenn das zeichen vorher kein sonderzeichen war
+            if (vorher[vorher.length - 1] == '+' && welcherOperator == '-') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '+' && welcherOperator == '/') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '+' && welcherOperator == '*') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '+' && welcherOperator == '=') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '+' && welcherOperator == '.') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '-' && welcherOperator == '+') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '-' && welcherOperator == '*') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '-' && welcherOperator == '/') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '-' && welcherOperator == '=') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '-' && welcherOperator == '.') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '*' && welcherOperator == '-') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '*' && welcherOperator == '+') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '*' && welcherOperator == '/') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '*' && welcherOperator == '=') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '*' && welcherOperator == '.') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '/' && welcherOperator == '-') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '/' && welcherOperator == '+') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '/' && welcherOperator == '.') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '/' && welcherOperator == '*') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '/' && welcherOperator == '=') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '.' && welcherOperator == '+') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '.' && welcherOperator == '-') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '.' && welcherOperator == '/') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '.' && welcherOperator == '=') {
+                return;
+            }
+            if (vorher[vorher.length - 1] == '.' && welcherOperator == '*') {
+                return;
+            }
+            if (vorher[vorher.length - 15] == '1' && welcheZahl == '1') {
+                return;
+            }
+
+            console.log(vorher[0], vorher[0] == '-');
+            // der Operator der jetzt gerade angeklickt wurde dahinter packen
+            const jetzt = vorher + welcherOperator;
+            // beide Sachen wieder zurückschreiben
+            document.getElementById('outputftzhuk').textContent = jetzt;
+        }
+
+        function ausrechnen() {
+            const aufgabe = document.getElementById('outputftzhuk').textContent;
+            document.getElementById('outputftzhuk').textContent = eval(aufgabe);
+        }
+    </script>
+    <div class="container border">
+
+        <div class="row">
+            <i class='fas fa-seedling' style='font-size:50px;color:whitesmoke'></i>
+            <output id="outputftzhuk"></output>
+            <button class="col-3" onclick="aufZahlGeklickt(7)">7</button>
+            <button class="col-3" onclick="aufZahlGeklickt(8)">8</button>
+            <button class="col-3" onclick="aufZahlGeklickt(9)">9</button>
+            <button class="col-3" onclick="aufOperatorGeklickt('/')">÷</button>
+        </div>
+        <div class="row">
+            <button class="col-3" onclick="aufZahlGeklickt(4)">4</button>
+            <button class="col-3" onclick="aufZahlGeklickt(5)">5</button>
+            <button class="col-3" onclick="aufZahlGeklickt(6)">6</button>
+            <button onclick="aufOperatorGeklickt('*')">*</button>
+        </div>
+        <div class="row">
+            <button class="col-3" onclick="aufZahlGeklickt(1)">1</button>
+            <button class="col-3" onclick="aufZahlGeklickt(2)">2</button>
+            <button class="col-3" onclick="aufZahlGeklickt(3)">3</button>
+            <button onclick="aufOperatorGeklickt('-')">-</button>
+        </div>
+        <div class="row">
+            <button onclick="aufOperatorGeklickt('+')">+</button>
+            <button onclick="aufZahlGeklickt(0)">0</button>
+            <button onclick="aufOperatorGeklickt('.')">.</button>
+            <button onclick="ausrechnen()">=</button>
+        </div>
+    </div>
+    </div>
+
+</html>
