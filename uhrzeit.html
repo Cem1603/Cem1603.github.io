@@ -33,11 +33,24 @@
             const ergebnisH = h2 - h1;
             document.getElementById('Dumme').innerHTML = ergebnisH;
 
-            const ergebnisM = m2 - m1;
+            let ergebnisM;
+            if (h2 > h1) {
+                ergebnisM = m2;
+            } else {
+                ergebnisM = m2 - m1;
+            }
             document.getElementById('Mumme').innerHTML = ergebnisM;
 
-            const ergebnisS = s2 - s1;
+            let ergebnisS;
+            if (m2 > m1) {
+                ergebnisS = s2;
+            } else {
+                ergebnisS = s2 - s1;
+            }
             document.getElementById('Summe').innerHTML = ergebnisS;
+
+
+
         }
 
         function checkTime(i) {
