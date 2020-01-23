@@ -3,34 +3,41 @@
 
 <head>
     <script>
+        let h1;
+        let m1;
+        let s1;
+
         function startTime() {
             var today = new Date();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            m = checkTime(m);
-            s = checkTime(s);
+            h1 = today.getHours();
+            m1 = today.getMinutes();
+            s1 = today.getSeconds();
+            const m = checkTime(m1);
+            const s = checkTime(s1);
             document.getElementById('txt').innerHTML =
-                h + ":" + m + ":" + s;
-        }
-
-        function checkTime(i) {
-            if (i < 10) {
-                i = "0" + i
-            }; // add zero in front of numbers < 10
-            return i;
+                h1 + ":" + m + ":" + s;
         }
 
         function RunningTime() {
             var today = new Date();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            m = checkTime(m);
-            s = checkTime(s);
+            var h2 = today.getHours();
+            var m2 = today.getMinutes();
+            var s2 = today.getSeconds();
+            m = checkTime(m2);
+            s = checkTime(s2);
             document.getElementById('dxd').innerHTML =
-                h + ":" + m + ":" + s;
+                h2 + ":" + m + ":" + s;
             var t = setTimeout(RunningTime, 500);
+
+            // JETZT HIER RECHNEN
+            const ergebnisH = h2 - h1;
+            document.getElementById('Dumme').innerHTML = ergebnisH;
+
+            const ergebnisM = m2 - m1;
+            document.getElementById('Mumme').innerHTML = ergebnisM;
+
+            const ergebnisS = s2 - s1;
+            document.getElementById('Summe').innerHTML = ergebnisS;
         }
 
         function checkTime(i) {
@@ -43,11 +50,17 @@
 </head>
 
 <body onload="startTime();RunningTime()">
-    Uhrzeit in dem Moment:
+    Als die Seite geoefftnet wurde war es:
     <div id="txt"></div>
-    <br> Uhrzeit laufend:
+    <br> Jetzt ist es:
     <div id="dxd"></div>
-
+    <br> Die Seite ist seit:
+    <div id="Summe"></div>
+    <div id="sekunden"> Sekunden offen</div>
+    <div id="Mumme"></div>
+    <div id="minuten"> Minuten offen</div>
+    <div id="Dumme"></div>
+    <div id="stunden"> Stunden offen</div>
 
 
 </body>
